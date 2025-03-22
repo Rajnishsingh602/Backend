@@ -1,8 +1,13 @@
 //require('dotenv').config({path: 
    //  './env'})
 // Load environment variables at the top
+console.log("Server starting...");
+import userRoutes from "./routes/user.routes.js";
+
+
+
 import dotenv from "dotenv";
-dotenv.config({ path: './env' });
+dotenv.config({ path: './.env' });
 
 import express from "express";
 import connectDB from "./db/index.js";
@@ -10,6 +15,9 @@ import connectDB from "./db/index.js";
 // Initialize Express app
 const app = express();
 app.use(express.json());
+
+
+app.use("/api/v1/users", userRoutes);//these are modifications from chatgpt because it has not been added there 
 
 // Basic route to test server
 app.get("/", (req, res) => {
@@ -33,6 +41,7 @@ const startServer = async () => {
 };
 
 startServer();
+
 
 
 
